@@ -3,6 +3,7 @@
     "target": "es2015",
     "declaration": true,
     "module": "es2015",
-    "outDir": "dist"
+    "outDir": "dist",
+    "sourceMap": true
   }
 }
