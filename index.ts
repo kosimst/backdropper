@@ -36,52 +36,62 @@ export default function dropper() {
 
     if (elements) {
       ;[...elements].forEach(elmnt => {
-        const { x, y } = elmnt.getBoundingClientRect()
-        const {
+        let { x, y } = elmnt.getBoundingClientRect()
+        let {
           width: bodyWidth,
           height: bodyHeight,
         } = document.body.getBoundingClientRect()
 
-        const html = document.body.innerHTML
-        const styles = [...document.head.querySelectorAll('style:not([type])')]
-          .map(el => el.outerHTML)
-          .join('\n')
+        const body = document.body.innerHTML
+        const head = document.head.innerHTML
 
-        const data = `
-        <svg xmlns='http://www.w3.org/2000/svg'
-          width="${bodyWidth}px"
-          height="${bodyHeight}px"
-        >
-          <foreignObject width="100%" height="100%">
-            <div xmlns="http://www.w3.org/1999/xhtml">
-              ${styles}
-              ${html}
-            </div>
-          </foreignObject>
-        </svg>
+        const wrapper = document.createElement('div')
+        elmnt.appendChild(wrapper)
+
+        wrapper.style.position = 'relative'
+        wrapper.style.top = `${8 - y}px`
+        wrapper.style.left = `${8 - x}px`
+
+        const shadow = wrapper.attachShadow({ mode: 'open' })
+
+        shadow.innerHTML = `
+          ${head}
+          ${body}
         `
-        const img = new Image()
-        const svg = new Blob([data], { type: 'image/svg+xml;charset=utf-8' })
-        const url = URL.createObjectURL(svg)
-        img.src = url
-        elmnt.appendChild(img)
 
-        img.style.position = 'relative'
-        img.style.top = `${8 - y}px`
-        img.style.left = `${8 - x}px`
+        wrapper.style.width = `${bodyWidth}px`
+        wrapper.style.height = `${bodyHeight}px`
 
         // @ts-ignore
-        img.style.willChange = 'transform'
+        wrapper.style.willChange = 'transform'
 
-        img.style.transform = `translateY(-${document.body.scrollTop}px)`
+        wrapper.style.transform = `translateY(-${document.body.scrollTop}px)`
 
         elmnt.style.backgroundColor = 'white'
         elmnt.style.overflow = 'hidden'
-        img.style.filter = filters
+        wrapper.style.filter = filters
 
         window.addEventListener('scroll', e => {
           requestAnimationFrame(() => {
-            img.style.transform = `translateY(-${document.body.scrollTop}px)`
+            wrapper.style.transform = `translateY(-${
+              document.body.scrollTop
+            }px)`
+          })
+        })
+
+        window.addEventListener('resize', () => {
+          requestAnimationFrame(() => {
+            ;({ x, y } = elmnt.getBoundingClientRect())
+            ;({
+              width: bodyWidth,
+              height: bodyHeight,
+            } = document.body.getBoundingClientRect())
+
+            wrapper.style.width = `${bodyWidth}px`
+            wrapper.style.height = `${bodyHeight}px`
+
+            wrapper.style.top = `${8 - y}px`
+            wrapper.style.left = `${8 - x}px`
           })
         })
       })
