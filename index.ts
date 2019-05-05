@@ -1,3 +1,5 @@
+import './backdrop-filter.js'
+
 export default function dropper() {
   const styleSheets = document.styleSheets
 
@@ -36,65 +38,13 @@ export default function dropper() {
 
     if (elements) {
       ;[...elements].forEach(elmnt => {
-        let { x, y } = elmnt.getBoundingClientRect()
-        let {
-          width: bodyWidth,
-          height: bodyHeight,
-        } = document.body.getBoundingClientRect()
+        const filter = document.createElement('backdrop-filter')
 
-        const body = document.body.innerHTML
-        const head = document.head.innerHTML
+        filter.setAttribute('filters', filters)
 
-        const wrapper = document.createElement('div')
-        elmnt.appendChild(wrapper)
-
-        wrapper.style.position = 'relative'
-        wrapper.style.top = `${8 - y}px`
-        wrapper.style.left = `${8 - x}px`
-
-        const shadow = wrapper.attachShadow({ mode: 'open' })
-
-        shadow.innerHTML = `
-          ${head}
-          ${body}
-        `
-
-        wrapper.style.width = `${bodyWidth}px`
-        wrapper.style.height = `${bodyHeight}px`
-
-        // @ts-ignore
-        wrapper.style.willChange = 'transform'
-
-        wrapper.style.transform = `translateY(-${document.body.scrollTop}px)`
-
-        elmnt.style.backgroundColor = 'white'
-        elmnt.style.overflow = 'hidden'
-        wrapper.style.filter = filters
-
-        window.addEventListener('scroll', e => {
-          requestAnimationFrame(() => {
-            wrapper.style.transform = `translateY(-${
-              document.body.scrollTop
-            }px)`
-          })
-        })
-
-        window.addEventListener('resize', () => {
-          requestAnimationFrame(() => {
-            ;({ x, y } = elmnt.getBoundingClientRect())
-            ;({
-              width: bodyWidth,
-              height: bodyHeight,
-            } = document.body.getBoundingClientRect())
-
-            wrapper.style.width = `${bodyWidth}px`
-            wrapper.style.height = `${bodyHeight}px`
-
-            wrapper.style.top = `${8 - y}px`
-            wrapper.style.left = `${8 - x}px`
-          })
-        })
+        elmnt.appendChild(filter)
       })
     }
   })
 }
+
