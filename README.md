@@ -1,4 +1,4 @@
-# Dropper
+# Backdropper
 ## A Polyfill for backdrop-filter
 
 ### Overview

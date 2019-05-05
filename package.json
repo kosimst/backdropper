@@ -1,5 +1,5 @@
 {
-  "name": "dropper",
+  "name": "backdropper",
   "version": "0.1.0",
   "description": "Polyfill for backdrop-filter",
   "main": "dist/index.js",
@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "polymer-cli": "^1.9.9"
+  },
+  "repository": {
+    "url": "https://github.com/kosimst/backdropper"
   }
 }
