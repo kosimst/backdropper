@@ -1,6 +1,6 @@
 import './backdrop-filter.js'
 
-export default function dropper() {
+export default function backdropper() {
   const styleSheets = document.styleSheets
 
   const affectedRules = new Map()
