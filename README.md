@@ -6,6 +6,10 @@
 
 Dropper lets allows you to use the until-now unsupported CSS-Property `backdrop-filter`. It works with scrolling. It is implemented using custom elements.
 
+#### Demo
+
+Here you can try the package out: https://codepen.io/kosimst/pen/xNxgjy
+
 ### Used technologies
 
 - Typescript
@@ -19,7 +23,7 @@ npm install backdropper
 
 **OR**
 
-`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js?module'`
+`import backdropper from 'https://unpkg.com/backdropper/dist/index.js?module'`
 
 ### Usage
 
@@ -46,7 +50,7 @@ Currenty, this package is in early development. It will be published to npm. At 
 
 If you want to try it out without installing it, import it from unpkg:
 
-`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js?module'`
+`import backdropper from 'https://unpkg.com/backdropper/dist/index.js?module'`
 
 ### TODOs
 
