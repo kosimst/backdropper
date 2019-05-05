@@ -19,7 +19,7 @@ npm install backdropper
 
 **OR**
 
-`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js'`
+`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js?module'`
 
 ### Usage
 
@@ -46,7 +46,7 @@ Currenty, this package is in early development. It will be published to npm. At 
 
 If you want to try it out without installing it, import it from unpkg:
 
-`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js'`
+`import backdropper from 'https://unpkg.com/backdropper@0.1.0/dist/index.js?module'`
 
 ### TODOs
 
