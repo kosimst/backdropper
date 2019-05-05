@@ -5,8 +5,14 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx polymer serve --port 3000 & tsc -w"
   },
   "author": "Simon Steindl",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lit-element": "^2.1.0"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.9.9"
+  }
 }
