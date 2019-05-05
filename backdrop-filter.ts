@@ -67,7 +67,7 @@ class BackdropFilter extends LitElement {
       requestAnimationFrame(() => {
         ;(this.shadowRoot
           .children[0] as HTMLElement).style.transform = `translateY(-${
-          document.body.scrollTop
+          document.body.scrollTop || document.documentElement.scrollTop
         }px)`
       })
     })
