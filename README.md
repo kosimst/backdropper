@@ -12,6 +12,10 @@ Dropper lets allows you to use the until-now unsupported CSS-Property `backdrop-
 - ShadowDOM for encapsulation
 - LitElement as base class for CustomElement
 
+### Install
+
+npm install backdropper
+
 ### Usage
 
 Simply use the `backdrop-filter` CSS-Property with the same values as in the normal `filter`-property. Then, import the polyfill as seen in `index.html` and execute the function.
