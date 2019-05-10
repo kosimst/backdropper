@@ -4,7 +4,7 @@
 
 ### Overview
 
-Dropper lets allows you to use the until-now unsupported CSS-Property `backdrop-filter`. It works with scrolling. It is implemented using custom elements.
+Dropper allows you to use the until-now unsupported CSS-Property `backdrop-filter`. It works with scrolling. It is implemented using custom elements.
 
 #### Demo
 
